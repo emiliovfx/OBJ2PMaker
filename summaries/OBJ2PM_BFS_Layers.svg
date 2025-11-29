@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400">
+  <style>
+    .node { fill: #ffffff; stroke: #333333; stroke-width: 1.5; }
+    .layer { fill: #f0f4ff; stroke: #4a6fbf; stroke-width: 1; }
+    .text { font-family: Arial, sans-serif; font-size: 12px; fill: #222222; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #222222; }
+    .subtitle { font-family: Arial, sans-serif; font-size: 13px; fill: #555555; }
+    .edge { stroke: #888888; stroke-width: 1.2; marker-end: url(#arrow); }
+  </style>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#666666" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="30" class="title">OBJ2PM — BFS Station Layering</text>
+  <text x="20" y="52" class="subtitle">
+    Vertices are grouped into stations by BFS distance from the nose vertex over the mesh topology.
+  </text>
+
+  <!-- Layers background -->
+  <!-- Layer 0 -->
+  <rect x="60" y="100" width="120" height="220" rx="8" ry="8" class="layer"/>
+  <text x="120" y="120" text-anchor="middle" class="text">Layer 0</text>
+  <text x="120" y="135" text-anchor="middle" class="text">(Station i=0)</text>
+  <text x="120" y="150" text-anchor="middle" class="text">Nose vertex</text>
+
+  <!-- Layer 1 -->
+  <rect x="240" y="100" width="140" height="220" rx="8" ry="8" class="layer"/>
+  <text x="310" y="120" text-anchor="middle" class="text">Layer 1</text>
+  <text x="310" y="135" text-anchor="middle" class="text">(Station i=1)</text>
+  <text x="310" y="150" text-anchor="middle" class="text">First ring</text>
+
+  <!-- Layer 2 -->
+  <rect x="440" y="100" width="140" height="220" rx="8" ry="8" class="layer"/>
+  <text x="510" y="120" text-anchor="middle" class="text">Layer 2</text>
+  <text x="510" y="135" text-anchor="middle" class="text">(Station i=2)</text>
+
+  <!-- Layer N -->
+  <rect x="640" y="100" width="180" height="220" rx="8" ry="8" class="layer"/>
+  <text x="730" y="120" text-anchor="middle" class="text">Layer N</text>
+  <text x="730" y="135" text-anchor="middle" class="text">(Station i=N)</text>
+  <text x="730" y="150" text-anchor="middle" class="text">Tail vertex</text>
+
+  <!-- Nose vertex -->
+  <circle cx="120" cy="210" r="12" class="node" />
+  <text x="120" y="214" text-anchor="middle" class="text">v₀</text>
+  <text x="120" y="240" text-anchor="middle" class="text">dist = 0</text>
+
+  <!-- Layer 1 vertices -->
+  <circle cx="280" cy="200" r="10" class="node"/>
+  <circle cx="310" cy="180" r="10" class="node"/>
+  <circle cx="340" cy="200" r="10" class="node"/>
+  <circle cx="310" cy="220" r="10" class="node"/>
+  <text x="310" y="250" text-anchor="middle" class="text">dist = 1</text>
+
+  <!-- Layer 2 vertices -->
+  <circle cx="480" cy="190" r="8" class="node"/>
+  <circle cx="510" cy="170" r="8" class="node"/>
+  <circle cx="540" cy="190" r="8" class="node"/>
+  <circle cx="510" cy="210" r="8" class="node"/>
+  <circle cx="495" cy="230" r="8" class="node"/>
+  <circle cx="525" cy="230" r="8" class="node"/>
+  <text x="510" y="255" text-anchor="middle" class="text">dist = 2</text>
+
+  <!-- Tail vertex -->
+  <circle cx="730" cy="210" r="12" class="node" />
+  <text x="730" y="214" text-anchor="middle" class="text">vₜ</text>
+  <text x="730" y="240" text-anchor="middle" class="text">dist = N</text>
+
+  <!-- Edges from nose to layer 1 -->
+  <line x1="132" y1="210" x2="270" y2="200" class="edge"/>
+  <line x1="132" y1="208" x2="300" y2="182" class="edge"/>
+  <line x1="132" y1="212" x2="340" y2="200" class="edge"/>
+  <line x1="130" y1="220" x2="305" y2="218" class="edge"/>
+
+  <!-- Edges layer 1 to 2 (abstract) -->
+  <line x1="340" y1="200" x2="470" y2="190" class="edge"/>
+  <line x1="340" y1="200" x2="505" y2="170" class="edge"/>
+  <line x1="340" y1="200" x2="545" y2="190" class="edge"/>
+  <line x1="340" y1="200" x2="520" y2="210" class="edge"/>
+
+  <!-- Edges layer 2 to tail (abstract) -->
+  <line x1="545" y1="190" x2="718" y2="210" class="edge"/>
+  <line x1="525" y1="230" x2="720" y2="220" class="edge"/>
+
+  <!-- Legend -->
+  <rect x="60" y="320" width="780" height="60" rx="6" ry="6" fill="#fafafa" stroke="#cccccc"/>
+  <text x="70" y="340" class="text">
+    • BFS starts at the nose (v₀) → distance 0. Each concentric topological layer defines a station i.
+  </text>
+  <text x="70" y="358" class="text">
+    • We group all vertices with the same distance into one station ring, from i=0 (nose) to i=N (tail).
+  </text>
+</svg>
