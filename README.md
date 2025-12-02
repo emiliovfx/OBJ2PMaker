@@ -82,22 +82,8 @@ This tool is part of the **CIS (Captain Iceman Series) Flight Model Pipeline**, 
 
 ## 🔧 Installation
 
-### Prerequisites
-```bash
-python 3.10+
-pip install numpy
-```
-
-### Clone
-```bash
-git clone https://github.com/emiliovfx/CIS_PM_Generator.git
-cd CIS_PM_Generator
-```
-
-### Run
-```bash
-python cis_PMGenerator.py
-```
+Extract the zip and place it in the folder of your preference.
+Run the .exe
 
 ---
 
@@ -160,6 +146,7 @@ JetstreamFS.com
 ## 💬 Support
 
 Open an issue on GitHub for help, debugging, or feature requests.
+
 
 
 
