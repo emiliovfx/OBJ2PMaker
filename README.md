@@ -5,7 +5,7 @@ It automates the extraction, cleaning, station generation, vertex mapping, and o
 
 This tool is part of the **CIS (Captain Iceman Series) Flight Model Pipeline**, used internally to build high‑accuracy aircraft such as the CIS Seneca II, CIS Seminole, and CIS Navajo Chieftain.
 
-[cover](images/cover.png)
+![cover](images/cover.png)
 
 ---
 
@@ -160,6 +160,7 @@ JetstreamFS.com
 ## 💬 Support
 
 Open an issue on GitHub for help, debugging, or feature requests.
+
 
 
 
